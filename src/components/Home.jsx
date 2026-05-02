@@ -9,6 +9,44 @@ import {
 import { TbPhoneCall } from "react-icons/tb";
 import { earphones, googlePixel6Pro, notebook, playstation } from "../assets";
 import { FaArrowRight } from "react-icons/fa";
+import NewsCard from "./NewsCard";
+
+const newsData = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=60",
+    author: "Kristin",
+    date: "19 Dec, 2013",
+    comments: 453,
+    title:
+      "Cras nisl dolor, accumsan et metus sit amet, vulputate condimentum dolor.",
+    description:
+      "Maecenas scelerisque, arcu quis tempus egestas, ligula diam molestie lectus, tincidunt malesuada arcu metus posuere metus.",
+  },
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=60",
+    author: "Robert",
+    date: "28 Nov, 2015",
+    comments: 738,
+    title: "Curabitur pulvinar aliquam lectus, non blandit erat mattis vitae.",
+    description:
+      "Mauris scelerisque odio id rutrum volutpat. Pellentesque urna odio, vulputate at tortor vitae, hendrerit blandit lorem.",
+  },
+  {
+    id: 3,
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=60",
+    author: "Arlene",
+    date: "9 May, 2014",
+    comments: 826,
+    title: "Curabitur massa orci, consectetur et blandit ac, auctor et tellus.",
+    description:
+      "Pellentesque vestibulum lorem vel gravida aliquam. Morbi porta, odio id suscipit mattis, risus augue condimentum purus.",
+  },
+];
 
 function Home() {
   return (
@@ -170,6 +208,19 @@ function Home() {
             <div className="absolute top-3 left-1 w-27 h-27 bg-[#FFCEAD] border-6 border-white rounded-full flex items-center justify-center text-[#191C1F] font-semibold z-10">
               <span className="text-[20px]">$1999</span>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-12 bg-[#F2F4F5]">
+        <div className="container mx-auto">
+          <h2 className="text-[32px] font-semibold text-center text-[#191C1F] mb-10">
+            Latest News
+          </h2>
+
+          <div className="grid grid-cols-3 gap-6">
+            {newsData.map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
           </div>
         </div>
       </section>
