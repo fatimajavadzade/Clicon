@@ -10,6 +10,7 @@ import { TbPhoneCall } from "react-icons/tb";
 import { earphones, googlePixel6Pro, notebook, playstation } from "../assets";
 import { FaArrowRight } from "react-icons/fa";
 import NewsCard from "./NewsCard";
+import ProductCard from "./ProductCard";
 
 const newsData = [
   {
@@ -45,6 +46,113 @@ const newsData = [
     title: "Curabitur massa orci, consectetur et blandit ac, auctor et tellus.",
     description:
       "Pellentesque vestibulum lorem vel gravida aliquam. Morbi porta, odio id suscipit mattis, risus augue condimentum purus.",
+  },
+];
+
+const productsData = [
+  {
+    title: "FLASH SALE TODAY",
+    items: [
+      {
+        id: 1,
+        title: "Bose Sport Earbuds - Wireless Earphones - Bluetooth In Ear...",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200",
+      },
+      {
+        id: 2,
+        title: "Simple Mobile 4G LTE Prepaid Smartphone",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200",
+      },
+      {
+        id: 3,
+        title: "4K UHD LED Smart TV with Chromecast Built-in",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=200",
+      },
+    ],
+  },
+  {
+    title: "BEST SELLERS",
+    items: [
+      {
+        id: 4,
+        title: "Samsung Electronics Samsung Galaxy S21 5G",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200",
+      },
+      {
+        id: 5,
+        title: "Simple Mobile 5G LTE Galaxy 12 Mini 512GB Gaming Phone",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200",
+      },
+      {
+        id: 6,
+        title: "Sony DSCHX8 High Zoom Point & Shoot Camera",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200",
+      },
+    ],
+  },
+  {
+    title: "TOP RATED",
+    items: [
+      {
+        id: 7,
+        title: "Portable Washing Machine, 11lbs capacity Model 18NMF...",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=200",
+      },
+      {
+        id: 8,
+        title: "Sony DSCHX8 High Zoom Point & Shoot Camera",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=200",
+      },
+      {
+        id: 9,
+        title: "Dell Optiplex 7000x7480 All-in-One Computer Monitor",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=200",
+      },
+    ],
+  },
+  {
+    title: "NEW ARRIVAL",
+    items: [
+      {
+        id: 10,
+        title: "TOZO T6 True Wireless Earbuds Bluetooth Headphone...",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=200",
+      },
+      {
+        id: 11,
+        title: "JBL FLIP 4 - Waterproof Portable Bluetooth Speaker...",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1557180295-76eee20ae8aa?w=200",
+      },
+      {
+        id: 12,
+        title: "Wyze Cam Pan v2 1080p Pan/Tilt/Zoom Wi-Fi Indoor Smart...",
+        price: "$1,500",
+        image:
+          "https://images.unsplash.com/photo-1557180295-76eee20ae8aa?w=200",
+      },
+    ],
   },
 ];
 
@@ -95,6 +203,7 @@ function Home() {
           </div>
         </div>
       </section>
+
       <section className="container mx-auto pt-6 bg-white">
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2 bg-[#F2F4F5] p-14 flex flex-row items-center justify-between relative rounded-md">
@@ -211,6 +320,34 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <section className="py-12">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-4 gap-6">
+            {productsData.map((product, index) => (
+              <div key={index} className="flex flex-col gap-4">
+                <h3 className="text-base font-semibold text-[#191C1F] uppercase">
+                  {product.title}
+                </h3>
+
+                <div className="flex flex-col gap-4">
+                  {product.items.map((item) => (
+                    <ProductCard key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <button className="bg-[#FA8232] text-white font-bold py-3 px-8 rounded-[3px] flex items-center gap-3 hover:cursor-pointer transition-colors duration-200 hover:bg-[#e07124]">
+              <span className="uppercase">All</span>
+              <FaArrowRight />
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 bg-[#F2F4F5]">
         <div className="container mx-auto">
           <h2 className="text-[32px] font-semibold text-center text-[#191C1F] mb-10">
