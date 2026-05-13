@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
+import { BASKET } from "../../contexts/BasketContext";
 
 function Card({ item }) {
+  const { addToBasket } = useContext(BASKET);
   const stars = [];
 
   for (let i = 0; i < 5; i++) {
@@ -12,23 +14,6 @@ function Card({ item }) {
       stars.push(
         <AiOutlineStar key={i} className="text-[#ADB7BC] text-base" />,
       );
-    }
-  }
-
-  function addToCart(product) {
-    const basket = JSON.parse(localStorage.getItem("basket")) || [];
-
-    const isExist = basket.find((item) => item.id === product.id);
-
-    if (isExist) {
-      alert("Məhsul artıq səbətdədir!");
-    } else {
-      basket.push({ ...product, quantity: 1 });
-
-      localStorage.setItem("basket", JSON.stringify(basket));
-      console.log(basket);
-
-      alert("Məhsul səbətə əlavə olundu!");
     }
   }
 
@@ -60,7 +45,7 @@ function Card({ item }) {
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div
             onClick={() => {
-              addToCart(item);
+              addToBasket(item);
             }}
             className="bg-white p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
           >

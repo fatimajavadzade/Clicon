@@ -1,45 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { GoXCircle } from "react-icons/go";
 import { IoChevronForward } from "react-icons/io5";
 import { PiHouseBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { BASKET } from "../../contexts/BasketContext";
 
 function Basket() {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("basket")) || [];
-    setCartItems(data);
-  }, []);
+  const { basket, deleteFromBasket, updateQuantity } = useContext(BASKET);
 
   // Total Amount
   let totalAmount = 0;
-  cartItems.forEach((item) => {
+  basket.forEach((item) => {
     totalAmount += item.currentPrice * item.quantity;
   });
-
-  // Remove from basket
-  function removeItem(id) {
-    var updatedCart = cartItems.filter((item) => item.id !== id);
-
-    setCartItems(updatedCart);
-
-    localStorage.setItem("basket", JSON.stringify(updatedCart));
-  }
-
-  // UPDATE Quantity
-  function updateQuantity(id, amount) {
-    const updatedCart = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + amount } : item,
-    );
-
-    const filteredCart = updatedCart.filter((item) => item.quantity > 0);
-
-    setCartItems(filteredCart);
-    localStorage.setItem("basket", JSON.stringify(filteredCart));
-  }
 
   return (
     <main>
@@ -72,12 +47,12 @@ function Basket() {
                 </thead>
 
                 <tbody>
-                  {cartItems.map((item) => (
+                  {basket.map((item) => (
                     <tr key={item.id}>
                       <td className="py-5 pl-6 pr-3">
                         <div className="flex items-center gap-3">
                           <button
-                            onClick={() => removeItem(item.id)}
+                            onClick={() => deleteFromBasket(item.id)}
                             className="text-[#929FA5] hover:text-[#EE5858] cursor-pointer"
                           >
                             <GoXCircle className="w-6 h-6" />

@@ -13,16 +13,12 @@ import {
 import { FiShoppingCart } from "react-icons/fi";
 import { LuSearch } from "react-icons/lu";
 import { PiUserLight } from "react-icons/pi";
+import { useContext } from "react";
+import { BASKET } from "../contexts/BasketContext";
 
 function Header() {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("basket")) || [];
-    setCartItems(data);
-  }, []);
-
-  const basketItemsCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const { basket } = useContext(BASKET);
+  const basketItemsCount = basket.reduce((count, item) => count + item.quantity, 0);
 
   return (
     <header className="w-full bg-[#1B6392]">
