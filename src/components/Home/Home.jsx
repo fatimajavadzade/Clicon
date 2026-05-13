@@ -7,10 +7,16 @@ import {
   PiMapPinLineLight,
 } from "react-icons/pi";
 import { TbPhoneCall } from "react-icons/tb";
-import { earphones, googlePixel6Pro, notebook, playstation } from "../assets";
+import {
+  earphones,
+  googlePixel6Pro,
+  notebook,
+  playstation,
+} from "../../assets";
 import { FaArrowRight } from "react-icons/fa";
 import NewsCard from "./NewsCard";
 import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
 
 const newsData = [
   {
@@ -223,7 +229,7 @@ function Home() {
                 Pass for $2 USD.
               </p>
               <button className="bg-[#FA8232] text-white font-bold py-3 px-8 rounded-[3px] flex items-center gap-3 hover:cursor-pointer">
-                <span>Shop Now</span>
+                <Link to="/products">Shop Now</Link>
                 <FaArrowRight />
               </button>
             </div>
@@ -247,7 +253,7 @@ function Home() {
                   New Google Pixel 6 Pro
                 </h3>
                 <button className="bg-[#FA8232] text-white font-bold py-3 px-6 rounded-[3px] flex items-center gap-3 hover:cursor-pointer">
-                  <span>Shop Now</span>
+                  <Link to="/products">Shop Now</Link>
                   <FaArrowRight />
                 </button>
               </div>
@@ -283,7 +289,7 @@ function Home() {
                   $299 USD
                 </span>
                 <button className="bg-[#FA8232] text-white font-bold py-3 px-6 rounded-[3px] flex items-center gap-3 hover:cursor-pointer mt-5">
-                  <span>Shop Now</span>
+                  <Link to="/products">Shop Now</Link>
                   <FaArrowRight />
                 </button>
               </div>
@@ -303,7 +309,7 @@ function Home() {
               Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage.
             </p>
             <button className="bg-[#FA8232] text-white font-bold py-3 px-8 rounded-[3px] flex items-center gap-3 hover:cursor-pointer">
-              <span>Shop Now</span>
+              <Link to="/products">Shop Now</Link>
               <FaArrowRight />
             </button>
           </div>
@@ -341,7 +347,9 @@ function Home() {
 
           <div className="flex justify-center mt-6">
             <button className="bg-[#FA8232] text-white font-bold py-3 px-8 rounded-[3px] flex items-center gap-3 hover:cursor-pointer transition-colors duration-200 hover:bg-[#e07124]">
-              <span className="uppercase">All</span>
+              <Link to="/products">
+                <span className="uppercase">All</span>
+              </Link>
               <FaArrowRight />
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import {
   FaFacebook,
@@ -15,6 +15,15 @@ import { LuSearch } from "react-icons/lu";
 import { PiUserLight } from "react-icons/pi";
 
 function Header() {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("basket")) || [];
+    setCartItems(data);
+  }, []);
+
+  const basketItemsCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header className="w-full bg-[#1B6392]">
       {/* Header Top */}
@@ -68,12 +77,15 @@ function Header() {
       <div className="py-5">
         <div className="container mx-auto flex items-center justify-between">
           {/* Logo */}
-          <h1 className="flex items-center gap-2 text-white font-bold text-[32px]">
+          <a
+            href="/"
+            className="flex items-center gap-2 text-white font-bold text-[32px]"
+          >
             <div className="bg-white text-[#1B6392] rounded-full w-12 h-12 flex items-center justify-center">
               <div className="bg-white border-4 border-[#1B6392] rounded-full w-6 h-6 flex items-center justify-center"></div>
             </div>
             CLICON
-          </h1>
+          </a>
 
           {/* Search */}
           <div className="w-1/2 flex items-center gap-2 bg-white px-5 py-3.5 rounded-xs">
@@ -87,7 +99,14 @@ function Header() {
 
           {/* Icons */}
           <div className="flex items-center gap-6 text-white text-2xl">
-            <FiShoppingCart className="hover:cursor-pointer" />
+            <a href="/basket" className="relative">
+              <FiShoppingCart className="hover:cursor-pointer" />
+              {basketItemsCount > 0 && (
+                <span className="w-5 h-5 flex justify-center items-center font-bold absolute -top-2 -right-2 bg-white text-black rounded-full text-xs p-2">
+                  {basketItemsCount}
+                </span>
+              )}
+            </a>
             <FaRegHeart className="hover:cursor-pointer" />
             <PiUserLight className="hover:cursor-pointer" />
           </div>

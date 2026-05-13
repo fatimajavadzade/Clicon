@@ -1,6 +1,7 @@
 import React from "react";
 import { PiHouseBold, PiWarningCircleBold } from "react-icons/pi";
 import { IoArrowBack, IoChevronForward } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 function Error404() {
   return (
@@ -19,13 +20,13 @@ function Error404() {
             axtarışınıza davam edə bilərsiniz.
           </p>
 
-          <a
-            href="/"
+          <Link
+            to="/"
             className="flex items-center justify-center gap-2 px-8 py-4 bg-[#FA8232] text-white font-bold rounded-sm hover:bg-[#e0722b] transition-all uppercase text-sm"
           >
             <PiHouseBold size={20} />
             Ana Səhifə
-          </a>
+          </Link>
         </div>
       </section>
     </main>

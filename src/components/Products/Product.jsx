@@ -1,8 +1,9 @@
 import React from "react";
-import Home from "./Home";
+import Home from "../Home/Home";
 import { IoArrowBack, IoArrowForward, IoChevronForward } from "react-icons/io5";
 import { PiHouseBold } from "react-icons/pi";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -337,7 +338,7 @@ function Product() {
       <section className="bg-[#F2F4F5] py-6.5">
         <div className="container mx-auto flex items-center gap-2 text-sm text-[#5F6C72]">
           <PiHouseBold size={20} />
-          <span>Home</span>
+          <Link to="/">Home</Link>
           <IoChevronForward size={12} />
           <span className="text-[#2DA5F3] font-medium hover:underline cursor-pointer">
             Electronics Devices
